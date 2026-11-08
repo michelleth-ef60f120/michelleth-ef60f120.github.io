@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>91直播-热门游戏直播_赛事解说_睡前陪伴</title>
+    <meta name="description" content="91直播聚合热门游戏直播、赛事解说与睡前陪伴内容。提供分类筛选、热门推荐与深度解析，适合寻找通勤追播与休闲选择的观众。">
+    <meta name="keywords" content="游戏直播,赛事解说,睡前陪伴,通勤追播,直播分类">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1e3a'/%3E%3Cpath d='M10 10h12v4H10zM10 18h8v4H10z' fill='%23ff6b6b'/%3E%3Ccircle cx='24' cy='24' r='3' fill='%23ffd93d'/%3E%3C/svg%3E">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg: #f7f8fc;
+            --surface: #ffffff;
+            --ink: #14171f;
+            --ink-soft: #3b3f4d;
+            --muted: #6b7180;
+            --line: #e4e7ef;
+            --brand: #2d2f5e;
+            --brand-soft: #eef0ff;
+            --accent: #e63946;
+            --accent-soft: #ffe9ea;
+            --gold: #f4a261;
+            --radius: 14px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+            --shadow-md: 0 6px 18px rgba(20,23,31,0.06);
+            --font: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --announce-h: 38px;
+            --header-h: 64px;
+            --sticky-offset: calc(var(--announce-h) + var(--header-h));
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: calc(var(--sticky-offset) + 8px); }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.65;
+            font-size: 15px;
+            padding-top: var(--sticky-offset);
+        }
+
+        a { color: inherit; text-decoration: none; }
+        ul, ol { list-style: none; }
+        img, svg { display: block; max-width: 100%; }
+        button { font-family: inherit; cursor: pointer; }
+
+        /* === 吸顶公告条 === */
+        .announce-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--announce-h);
+            background: linear-gradient(90deg, #1f2242 0%, #2d2f5e 55%, #3d2f5e 100%);
+            color: #f0f1ff;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 16px;
+            z-index: 1001;
+            letter-spacing: 0.3px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .announce-bar .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--gold);
+            box-shadow: 0 0 0 3px rgba(244,162,97,0.25);
+            flex-shrink: 0;
+        }
+        .announce-bar strong { color: #ffd93d; font-weight: 600; }
+
+        /* === 吸顶页头 === */
+        .site-header {
+            position: fixed;
+            top: var(--announce-h);
+            left: 0;
+            right: 0;
+            height: var(--header-h);
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000;
+        }
+        .header-inner {
+            max-width: 1360px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            padding: 0 22px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        .brand-mark {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            background: var(--brand);
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .brand-mark::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #ff6b6b 0%, transparent 55%);
+            opacity: 0.65;
+        }
+        .brand-mark svg { position: relative; z-index: 1; }
+        .brand-name {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            color: var(--brand);
+            line-height: 1.1;
+        }
+        .brand-name span { color: var(--accent); }
+        .header-nav {
+            display: flex;
+            gap: 4px;
+            flex: 1;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .header-nav::-webkit-scrollbar { display: none; }
+        .header-nav a {
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink-soft);
+            white-space: nowrap;
+            transition: background 0.18s, color 0.18s;
+        }
+        .header-nav a:hover, .header-nav a:focus-visible {
+            background: var(--brand-soft);
+            color: var(--brand);
+            outline: none;
+        }
+        .header-search {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            padding: 4px 6px 4px 14px;
+            transition: border-color 0.18s, box-shadow 0.18s;
+        }
+        .header-search:focus-within {
+            border-color: var(--brand);
+            box-shadow: 0 0 0 3px rgba(45,47,94,0.08);
+        }
+        .header-search input {
+            border: none;
+            background: transparent;
+            font-size: 13.5px;
+            width: 130px;
+            outline: none;
+            color: var(--ink);
+            font-family: inherit;
+        }
+        .header-search input::placeholder { color: var(--muted); }
+        .header-search button {
+            border: none;
+            background: var(--brand);
+            color: #fff;
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background 0.18s;
+        }
+        .header-search button:hover { background: #3d3f7a; }
+        .header-search button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* === 布局容器 === */
+        .wrap {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        /* === 首屏 === */
+        .hero {
+            background: linear-gradient(135deg, #1f2242 0%, #2d2f5e 48%, #3a2a4a 100%);
+            color: #fff;
+            border-radius: 0 0 28px 28px;
+            margin-bottom: 26px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -60px; top: -50px;
+            width: 340px; height: 340px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(230,57,70,0.20) 0%, transparent 65%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 40px 22px 38px;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 36px;
+            align-items: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 30px;
+            padding: 4px 14px 4px 8px;
+            font-size: 12.5px;
+            color: #e0e2f0;
+            margin-bottom: 16px;
+            backdrop-filter: blur(4px);
+        }
+        .hero-badge i {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255,107,107,0.3);
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            line-height: 1.15;
+            margin-bottom: 14px;
+            color: #ffffff;
+        }
+        .hero p {
+            font-size: 15.5px;
+            color: #c9cbe0;
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-primary, .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-size: 14.5px;
+            font-weight: 600;
+            transition: transform 0.16s, box-shadow 0.16s, background 0.16s;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(230,57,70,0.35);
+        }
+        .btn-primary:hover {
+            background: #d32f3a;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(230,57,70,0.42);
+        }
+        .btn-primary:focus-visible, .btn-ghost:focus-visible {
+            outline: 2px solid #ffd93d;
+            outline-offset: 3px;
+        }
+        .btn-ghost {
+            background: rgba(255,255,255,0.08);
+            color: #e8e9f5;
+            border: 1px solid rgba(255,255,255,0.20);
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.16); }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-visual .orb {
+            width: 240px; height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #ff6b6b 0%, #2d2f5e 70%);
+            opacity: 0.28;
+            filter: blur(18px);
+            position: absolute;
+        }
+        .hero-visual svg { position: relative; z-index: 1; }
+
+        /* === 三栏主内容 === */
+        .layout {
+            display: grid;
+            grid-template-columns: 178px minmax(0, 1fr) 246px;
+            gap: 26px;
+            align-items: start;
+            margin-bottom: 44px;
+        }
+
+        /* --- 左栏 --- */
+        .sidebar-left {
+            position: sticky;
+            top: calc(var(--sticky-offset) + 16px);
+            align-self: start;
+        }
+        .side-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 16px 14px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 18px;
+        }
+        .side-card h3 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--line);
+        }
+        .channel-list li { margin-bottom: 2px; }
+        .channel-list a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 9px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--ink-soft);
+            transition: background 0.15s, color 0.15s;
+        }
+        .channel-list a:hover, .channel-list a:focus-visible {
+            background: var(--brand-soft);
+            color: var(--brand);
+            outline: none;
+        }
+        .channel-list a .ch-dot {
+            width: 6px; height: 6px; border-radius: 2px;
+            background: var(--accent);
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .tag-cloud a {
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            color: var(--ink-soft);
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+        .tag-cloud a:hover, .tag-cloud a:focus-visible {
+            background: var(--brand-soft);
+            border-color: var(--brand);
+            color: var(--brand);
+            outline: none;
+        }
+
+        /* --- 中栏 --- */
+        .main-col { min-width: 0; }
+        .section {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 26px 28px;
+            margin-bottom: 22px;
+            box-shadow: var(--shadow-sm);
+            scroll-margin-top: calc(var(--sticky-offset) + 12px);
+        }
+        .section h2 {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            color: var(--brand);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .section-sub {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        .section h3 {
+            font-size: 16.5px;
+            font-weight: 700;
+            color: var(--ink);
+            margin: 20px 0 8px;
+        }
+        .section h3:first-of-type { margin-top: 0; }
+        .section p { margin-bottom: 12px; color: var(--ink-soft); font-size: 14.5px; }
+        .section p:last-child { margin-bottom: 0; }
+
+        /* 简介 */
+        .intro-text p { line-height: 1.75; }
+
+        /* 热门卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .content-card {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 15px 16px;
+            background: #fcfcfe;
+            transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+        }
+        .content-card:hover {
+            border-color: #c9cce0;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 9px;
+        }
+        .card-tags span {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 9px;
+            border-radius: 20px;
+            background: var(--brand-soft);
+            color: var(--brand);
+            letter-spacing: 0.2px;
+        }
+        .card-tags span.hot {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+        .content-card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.4;
+            color: var(--ink);
+        }
+        .content-card .card-desc {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.55;
+            margin-bottom: 10px;
+        }
+        .card-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 12px;
+            color: var(--muted);
+            border-top: 1px dashed var(--line);
+            padding-top: 9px;
+        }
+        .card-meta b { color: var(--ink-soft); font-weight: 600; }
+
+        /* 最新更新列表 */
+        .update-list li {
+            display: flex;
+            gap: 12px;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--line);
+            align-items: baseline;
+        }
+        .update-list li:last-child { border-bottom: none; }
+        .update-list .up-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ink);
+            flex-shrink: 0;
+            max-width: 42%;
+        }
+        .update-list .up-desc {
+            font-size: 13px;
+            color: var(--muted);
+            flex: 1;
+        }
+        .update-list .up-time {
+            font-size: 12px;
+            color: #9a9fb0;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        /* 分类入口 */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .cat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 16px 8px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            text-align: center;
+            background: #fcfcfe;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--ink-soft);
+            transition: background 0.16s, border-color 0.16s, color 0.16s;
+        }
+        .cat-item:hover, .cat-item:focus-visible {
+            background: var(--brand-soft);
+            border-color: var(--brand);
+            color: var(--brand);
+            outline: none;
+        }
+        .cat-item .cat-emoji { font-size: 20px; line-height: 1; }
+
+        /* 深度解析正文 */
+        .deep-dive h3 {
+            border-left: 3px solid var(--accent);
+            padding-left: 10px;
+            margin-top: 24px;
+        }
+        .deep-dive ul {
+            margin: 8px 0 14px;
+            padding-left: 4px;
+        }
+        .deep-dive ul li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 7px;
+            font-size: 14.5px;
+            color: var(--ink-soft);
+            line-height: 1.65;
+        }
+        .deep-dive ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 2px;
+            background: var(--accent);
+            opacity: 0.7;
+        }
+        .deep-dive .highlight-box {
+            background: var(--brand-soft);
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin: 16px 0;
+            font-size: 14px;
+            color: var(--brand);
+            line-height: 1.65;
+        }
+
+        /* 体验指南 */
+        .guide-steps { counter-reset: step; }
+        .guide-steps li {
+            counter-increment: step;
+            position: relative;
+            padding: 12px 0 12px 44px;
+            border-bottom: 1px solid var(--line);
+            font-size: 14px;
+            color: var(--ink-soft);
+            line-height: 1.6;
+        }
+        .guide-steps li:last-child { border-bottom: none; }
+        .guide-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: var(--brand);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            display: grid;
+            place-items: center;
+        }
+        .guide-steps li strong { color: var(--ink); }
+
+        /* FAQ */
+        .faq-item {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            margin-bottom: 9px;
+            overflow: hidden;
+            background: #fcfcfe;
+        }
+        .faq-item summary {
+            padding: 13px 16px;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--ink);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            transition: background 0.15s;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: var(--brand-soft); }
+        .faq-item summary:focus-visible {
+            outline: 2px solid var(--brand);
+            outline-offset: -2px;
+        }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--muted);
+            flex-shrink: 0;
+            transition: transform 0.2s;
+        }
+        .faq-item[open] summary::after { content: '−'; color: var(--accent); }
+        .faq-item[open] summary { background: var(--brand-soft); color: var(--brand); }
+        .faq-answer {
+            padding: 0 16px 14px;
+            font-size: 14px;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
+
+        /* 用户评论 */
+        .comment-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .comment-item {
+            background: #fcfcfe;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+        .comment-head {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 7px;
+        }
+        .avatar {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: var(--brand-soft);
+            color: var(--brand);
+            font-size: 12px;
+            font-weight: 700;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+        .comment-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .comment-stars {
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 1px;
+            margin-left: auto;
+        }
+        .comment-text {
+            font-size: 13px;
+            color: var(--ink-soft);
+            line-height: 1.6;
+        }
+
+        /* 相关资讯 */
+        .news-item {
+            padding: 13px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .news-item:last-child { border-bottom: none; }
+        .news-head {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .news-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .news-date {
+            font-size: 12px;
+            color: #9a9fb0;
+            flex-shrink: 0;
+            margin-left: auto;
+        }
+        .news-summary {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* 相关推荐 */
+        .reco-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+        .reco-tags a {
+            font-size: 13px;
+            padding: 7px 16px;
+            border-radius: 24px;
+            background: var(--bg);
+            border: 1px solid var(--line);
+            color: var(--ink-soft);
+            font-weight: 500;
+            transition: background 0.16s, border-color 0.16s, color 0.16s;
+        }
+        .reco-tags a:hover, .reco-tags a:focus-visible {
+            background: var(--brand);
+            border-color: var(--brand);
+            color: #fff;
+            outline: none;
+        }
+
+        /* 趋势观察时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 6px;
+            bottom: 6px;
+            width: 2px;
+            background: var(--line);
+            border-radius: 2px;
+        }
+        .timeline li {
+            position: relative;
+            padding: 0 0 16px 0;
+            font-size: 14px;
+            color: var(--ink-soft);
+            line-height: 1.6;
+        }
+        .timeline li:last-child { padding-bottom: 0; }
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: -21px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid var(--accent);
+        }
+        .timeline li strong { color: var(--ink); }
+
+        /* --- 右栏 --- */
+        .sidebar-right {
+            position: sticky;
+            top: calc(var(--sticky-offset) + 16px);
+            align-self: start;
+        }
+        .toc-list li { margin-bottom: 1px; }
+        .toc-list a {
+            display: block;
+            padding: 5px 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: var(--muted);
+            transition: background 0.14s, color 0.14s;
+            line-height: 1.4;
+        }
+        .toc-list a:hover, .toc-list a:focus-visible {
+            background: var(--brand-soft);
+            color: var(--brand);
+            outline: none;
+        }
+        .hot-item {
+            display: flex;
+            gap: 9px;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--line);
+            align-items: flex-start;
+        }
+        .hot-item:last-child { border-bottom: none; }
+        .hot-rank {
+            width: 20px; height: 20px;
+            border-radius: 6px;
+            background: var(--bg);
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .hot-rank.top { background: var(--accent); color: #fff; }
+        .hot-text {
+            font-size: 13px;
+            color: var(--ink-soft);
+            line-height: 1.5;
+        }
+        .hot-text b { color: var(--ink); font-weight: 600; display: block; font-size: 13px; margin-bottom: 1px; }
+        .ext-link-list li {
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+        .ext-link-list a {
+            color: var(--brand);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.15s;
+        }
+        .ext-link-list a::before {
+            content: '›';
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .ext-link-list a:hover { color: var(--accent); }
+
+        /* === 页尾 === */
+        .site-footer {
+            background: #16182b;
+            color: #b9bcd0;
+            padding: 38px 0 26px;
+            margin-top: 10px;
+        }
+        .footer-inner {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 30px;
+            padding-bottom: 26px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand .brand-name {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .footer-brand .brand-name span { color: #ff6b6b; }
+        .footer-brand p {
+            font-size: 13px;
+            color: #8b8fa8;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+        .footer-col h4 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #e0e2f0;
+            margin-bottom: 12px;
+            letter-spacing: 0.4px;
+        }
+        .footer-col li { margin-bottom: 7px; }
+        .footer-col a {
+            font-size: 13px;
+            color: #8b8fa8;
+            transition: color 0.15s;
+        }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            padding-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 12px;
+            color: #6b6f88;
+        }
+        .footer-bottom .example-note {
+            color: #5c6078;
+            font-size: 11.5px;
+        }
+
+        /* === 响应式 === */
+        @media (max-width: 1080px) {
+            .layout {
+                grid-template-columns: 160px minmax(0, 1fr);
+            }
+            .sidebar-right {
+                display: none;
+            }
+        }
+        @media (max-width: 860px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-left {
+                position: static;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 14px;
+            }
+            .sidebar-left .side-card {
+                flex: 1 1 200px;
+                margin-bottom: 0;
+            }
+            .sidebar-left .side-card:first-child {
+                flex-basis: 100%;
+            }
+            .channel-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+            .channel-list li { margin-bottom: 0; }
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                padding: 30px 22px;
+            }
+            .hero h1 { font-size: 32px; }
+            .hero-visual { display: none; }
+            .card-grid { grid-template-columns: 1fr; }
+            .comment-list { grid-template-columns: 1fr; }
+            .cat-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-top { grid-template-columns: 1fr 1fr; }
+            .header-search input { width: 90px; }
+            .header-nav a { font-size: 13px; padding: 6px 10px; }
+        }
+        @media (max-width: 560px) {
+            :root { --announce-h: 34px; }
+            .announce-bar { font-size: 11.5px; gap: 6px; }
+            .header-inner { padding: 0 14px; gap: 10px; }
+            .brand-name { font-size: 18px; }
+            .brand-mark { width: 30px; height: 30px; }
+            .header-search { display: none; }
+            .wrap { padding: 0 14px; }
+            .section { padding: 20px 16px; }
+            .hero h1 { font-size: 26px; }
+            .hero-inner { padding: 24px 14px; }
+            .footer-top { grid-template-columns: 1fr; gap: 20px; }
+            .update-list li { flex-wrap: wrap; gap: 4px; }
+            .update-list .up-name { max-width: 100%; }
+            .update-list .up-time { margin-left: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 吸顶公告条 -->
+<div class="announce-bar">
+    <span class="dot"></span>
+    <span><strong>新赛季开启</strong> · 热门赛事解说与游戏直播分类已更新，通勤追播与睡前陪伴内容同步上线</span>
+</div>
+
+<!-- 吸顶页头 -->
+<header class="site-header">
+    <div class="header-inner">
+        <a href="/#top" class="brand" aria-label="91直播首页">
+            <span class="brand-mark">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="3" width="10" height="4" rx="1" fill="#ff6b6b"/>
+                    <rect x="3" y="11" width="7" height="4" rx="1" fill="#ffd93d"/>
+                    <circle cx="18" cy="18" r="3.2" fill="#ffd93d"/>
+                    <path d="M15 6l3 2-3 2V6z" fill="#ff6b6b"/>
+                </svg>
+            </span>
+            <span class="brand-name">91<span>直播</span></span>
+        </a>
+        <nav class="header-nav" aria-label="主题导航">
+            <a href="/#hot">热门推荐</a>
+            <a href="/#latest">最新更新</a>
+            <a href="/#cats">直播分类</a>
+            <a href="/#deep">深度解析</a>
+            <a href="/#guide">体验指南</a>
+            <a href="/#faq">常见问题</a>
+            <a href="/#comments">用户评论</a>
+            <a href="/#news">相关资讯</a>
+        </nav>
+        <div class="header-search">
+            <input type="search" id="siteSearch" placeholder="搜索直播内容…" aria-label="搜索直播内容">
+            <button type="button" id="searchBtn">搜索</button>
+        </div>
+    </div>
+</header>
+
+<!-- 主题首屏 -->
+<section class="hero" id="top">
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <div class="hero-badge"><i></i> 直播内容聚合 · 每日更新</div>
+            <h1>91直播</h1>
+            <p>聚合热门游戏直播、赛事解说与睡前陪伴内容。按类型、场景与热度筛选，通勤追播或休闲选择都有清晰入口。每类内容附看点与更新节奏，方便快速找到想看的那一场。</p>
+            <div class="hero-actions">
+                <a href="/#hot" class="btn-primary">浏览热门直播 →</a>
+                <a href="/#cats" class="btn-ghost">查看直播分类</a>
+            </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+            <div class="orb"></div>
+            <svg width="280" height="180" viewBox="0 0 280 180" fill="none">
+                <rect x="20" y="22" width="170" height="108" rx="10" fill="#2d2f5e" stroke="rgba(255,255,255,0.12)"/>
+                <rect x="34" y="36" width="142" height="58" rx="4" fill="#1a1c33"/>
+                <polygon points="96,52 96,82 122,67" fill="#ff6b6b"/>
+                <rect x="34" y="104" width="60" height="6" rx="3" fill="#3d3f7a"/>
+                <rect x="34" y="116" width="90" height="6" rx="3" fill="#3d3f7a"/>
+                <rect x="200" y="56" width="60" height="74" rx="8" fill="#1f2242" stroke="rgba(255,255,255,0.10)"/>
+                <circle cx="230" cy="80" r="12" fill="#ffd93d" opacity="0.85"/>
+                <rect x="210" y="100" width="40" height="5" rx="2.5" fill="#3d3f7a"/>
+                <rect x="210" y="111" width="30" height="5" rx="2.5" fill="#3d3f7a"/>
+                <circle cx="250" cy="24" r="5" fill="#ff6b6b"/>
+                <rect x="190" y="146" width="70" height="5" rx="2.5" fill="#3d3f7a"/>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<!-- 三栏主内容区 -->
+<div class="wrap">
+    <div class="layout">
+
+        <!-- 左栏 -->
+        <aside class="sidebar-left" aria-label="频道导航与分类索引">
+            <div class="side-card">
+                <h3>频道导航</h3>
+                <ul class="channel-list">
+                    <li><a href="/#hot"><span class="ch-dot"></span>热门推荐</a></li>
+                    <li><a href="/#latest"><span class="ch-dot"></span>最新更新</a></li>
+                    <li><a href="/#cats"><span class="ch-dot"></span>直播分类</a></li>
+                    <li><a href="/#deep"><span class="ch-dot"></span>深度解析</a></li>
+                    <li><a href="/#guide"><span class="ch-dot"></span>体验指南</a></li>
+                    <li><a href="/#faq"><span class="ch-dot"></span>常见问题</a></li>
+                    <li><a href="/#comments"><span class="ch-dot"></span>用户评论</a></li>
+                    <li><a href="/#news"><span class="ch-dot"></span>相关资讯</a></li>
+                    <li><a href="/#reco"><span class="ch-dot"></span>相关推荐</a></li>
+                    <li><a href="/#trend"><span class="ch-dot"></span>趋势观察</a></li>
+                </ul>
+            </div>
+            <div class="side-card">
+                <h3>热门标签</h3>
+                <div class="tag-cloud">
+                    <a href="/#hot">游戏直播</a>
+                    <a href="/#hot">赛事解说</a>
+                    <a href="/#hot">睡前陪伴</a>
+                    <a href="/#latest">通勤追播</a>
+                    <a href="/#cats">新赛季</a>
+                    <a href="/#cats">休闲选择</a>
+                    <a href="/#deep">解说分析</a>
+                    <a href="/#reco">完结直播</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 中栏 -->
+        <main class="main-col">
+
+            <!-- 1. 内容简介 -->
+            <section class="section intro-text" id="intro">
+                <h2>内容简介：91直播的内容方向与观看场景</h2>
+                <p class="section-sub">了解这个直播聚合页覆盖哪些内容类型、适合什么场景，以及如何快速定位想看的直播。</p>
+                <p>91直播是一个围绕游戏直播与赛事解说内容聚合的门户页面。它把分散在不同类型下的直播内容按主题、场景和热度重新组织，让观众在通勤、午休或睡前等碎片时间里，能迅速找到适合当下观看的直播。无论你关注的是新赛季的赛事解说，还是偏向陪伴氛围的游戏直播，都能在这里找到对应的分类入口和推荐条目。</p>
+                <p>页面内容覆盖游戏直播、赛事解说、睡前陪伴、通勤追播等方向。每个推荐条目都带有类型标签和简短看点，帮助你在打开直播之前先判断内容是否对味。分类区域按用户常用的搜索类别词划分，例如“新赛季赛事”“休闲游戏直播”“睡前陪伴直播”等，点击即可定位到对应板块。</p>
+                <p>对于喜欢比较不同直播风格的观众，深度解析和用户评论提供了额外的参考角度。你可以从解说风格、更新节奏、互动氛围几个维度了解不同内容的特点。如果你更在意“完结了吗”“在哪看”这类实际问题，FAQ 板块也整理了常见疑问的说明。</p>
+            </section>
+
+            <!-- 2. 热门内容推荐 -->
+            <section class="section" id="hot">
+                <h2>热门内容推荐：游戏直播与赛事解说精选</h2>
+                <p class="section-sub">以下条目为示例内容，包含类型标签、看点与示例热度，供展示结构参考。</p>
+                <div class="card-grid">
+                    <article class="content-card">
+                        <div class="card-tags"><span class="hot">赛事解说</span><span>新赛季</span><span>战术分析</span></div>
+                        <h4>新赛季揭幕战：战术拆解全程解说</h4>
+                        <p class="card-desc">从阵容选择到中期运营，逐分钟拆解关键决策，适合想看懂比赛节奏的观众。</p>
+                        <div class="card-meta"><span>热度 <b>9.2万</b></span><span>更新 <b>今日</b></span><span>评分 <b>4.8</b></span></div>
+                    </article>
+                    <article class="content-card">
+                        <div class="card-tags"><span>游戏直播</span><span>通勤追播</span><span>休闲</span></div>
+                        <h4>午间休闲局：轻量游戏连播</h4>
+                        <p class="card-desc">节奏轻快、单局时间短，适合通勤路上或午休时随手观看，无需连续追更。</p>
+                        <div class="card-meta"><span>热度 <b>6.7万</b></span><span>更新 <b>今日</b></span><span>评分 <b>4.5</b></span></div>
+                    </article>
+                    <article class="content-card">
+                        <div class="card-tags"><span>睡前陪伴</span><span>低强度</span><span>互动</span></div>
+                        <h4>深夜陪伴直播：低强度游戏与闲聊</h4>
+                        <p class="card-desc">以放松氛围为主，游戏节奏慢，穿插观众互动，适合睡前打开当背景音。</p>
+                        <div class="card-meta"><span>热度 <b>5.4万</b></span><span>更新 <b>昨晚</b></span><span>评分 <b>4.7</b></span></div>
+                    </article>
+                    <article class="content-card">
+                        <div class="card-tags"><span>赛事解说</span><span>复盘</span><span>对比分析</span></div>
+                        <h4>焦点对决复盘：两套解说风格对比</h4>
+                        <p class="card-desc">同一场比赛的两种解说视角，分别侧重数据推演与氛围带动，可对照观看。</p>
+                        <div class="card-meta"><span>热度 <b>8.1万</b></span><span>更新 <b>昨日</b></span><span>评分 <b>4.6</b></span></div>
+                    </article>
+                    <article class="content-card">
+                        <div class="card-tags"><span>游戏直播</span><span>新赛季</span><span>冲分</span></div>
+                        <h4>新赛季冲分实录：段位进阶全程</h4>
+                        <p class="card-desc">记录从定级到晋级的完整过程，包含关键局的选择思路与失误复盘。</p>
+                        <div class="card-meta"><span>热度 <b>7.3万</b></span><span>更新 <b>今日</b></span><span>评分 <b>4.4</b></span></div>
+                    </article>
+                    <article class="content-card">
+                        <div class="card-tags"><span>睡前陪伴</span><span>慢节奏</span><span>治愈</span></div>
+                        <h4>慢节奏建造直播：睡前解压向</h4>
+                        <p class="card-desc">没有激烈对抗，以建造和布置为主，画面与语速都偏舒缓。</p>
+                        <div class="card-meta"><span>热度 <b>4.9万</b></span><span>更新 <b>昨晚</b></span><span>评分 <b>4.9</b></span></div>
+                    </article>
+                    <article class="content-card">
+                        <div class="card-tags"><span>赛事解说</span><span>新人友好</span><span>规则讲解</span></div>
+                        <h4>新人向赛事导览：规则与看点入门</h4>
+                        <p class="card-desc">面向刚接触赛事的新观众，用通俗语言讲清基本规则和每局看点。</p>
+                        <div class="card-meta"><span>热度 <b>5.8万</b></span><span>更新 <b>前日</b></span><span>评分 <b>4.7</b></span></div>
+                    </article>
+                    <article class="content-card">
+                        <div class="card-tags"><span>游戏直播</span><span>通勤追播</span><span>短局</span></div>
+                        <h4>十分钟一局：短局快节奏直播合集</h4>
+                        <p class="card-desc">单局时长控制在十分钟左右，适合通勤路上分段观看，随时可停。</p>
+                        <div class="card-meta"><span>热度 <b>6.1万</b></span><span>更新 <b>今日</b></span><span>评分 <b>4.3</b></span></div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 3. 最新更新 -->
+            <section class="section" id="latest">
+                <h2>最新更新：直播内容动态</h2>
+                <p class="section-sub">按更新时间排列的近期条目，包含内容名称与一句话摘要。</p>
+                <ul class="update-list">
+                    <li><span class="up-name">新赛季解说·第3期</span><span class="up-desc">补充了中期换线决策的细节拆解。</span><span class="up-time">今日 14:20</span></li>
+                    <li><span class="up-name">午间休闲局连播</span><span class="up-desc">新增两局轻量游戏，单局约八分钟。</span><span class="up-time">今日 12:05</span></li>
+                    <li><span class="up-name">深夜陪伴直播</span><span class="up-desc">调整了互动环节顺序，语速更缓。</span><span class="up-time">昨晚 23:40</span></li>
+                    <li><span class="up-name">焦点对决复盘·下篇</span><span class="up-desc">加入两套解说风格的对照时间轴。</span><span class="up-time">昨日 20:15</span></li>
+                    <li><span class="up-name">新赛季冲分实录·第7天</span><span class="up-desc">记录关键晋级局的选角与运营思路。</span><span class="up-time">昨日 17:30</span></li>
+                    <li><span class="up-name">慢节奏建造直播</span><span class="up-desc">更新了建造主题与背景音设置说明。</span><span class="up-time">昨晚 22:10</span></li>
+                    <li><span class="up-name">新人向赛事导览</span><span class="up-desc">补充了常见术语的通俗解释段落。</span><span class="up-time">前日 16:45</span></li>
+                    <li><span class="up-name">短局快节奏直播合集</span><span class="up-desc">新增三个十分钟以内的短局切片。</span><span class="up-time">前日 10:20</span></li>
+                    <li><span class="up-name">赛事解说·周末特别场</span><span class="up-desc">预告了周末两场焦点赛的解说安排。</span><span class="up-time">前日 09:00</span></li>
+                </ul>
+            </section>
+
+            <!-- 4. 分类入口 -->
+            <section class="section" id="cats">
+                <h2>直播分类：按类型与场景筛选</h2>
+                <p class="section-sub">分类名称对应常见搜索类别，点击可定位到对应内容方向。</p>
+                <div class="cat-grid">
+                    <a href="/#hot" class="cat-item"><span class="cat-emoji">🏆</span>新赛季赛事</a>
+                    <a href="/#hot" class="cat-item"><span class="cat-emoji">🎮</span>游戏直播</a>
+                    <a href="/#hot" class="cat-item"><span class="cat-emoji">🎙️</span>赛事解说</a>
+                    <a href="/#hot" class="cat-item"><span class="cat-emoji">🌙</span>睡前陪伴</a>
+                    <a href="/#hot" class="cat-item"><span class="cat-emoji">🚇</span>通勤追播</a>
+                    <a href="/#hot" class="cat-item"><span class="cat-emoji">⚡</span>短局快节奏</a>
+                    <a href="/#hot" class="cat-item"><span class="cat-emoji">📊</span>战术复盘</a>
+                    <a href="/#hot" class="cat-item"><span class="cat-emoji">🛋️</span>休闲选择</a>
+                </div>
+            </section>
+
+            <!-- 5. 深度解析正文 -->
+            <section class="section deep-dive" id="deep">
+                <h2>深度解析：如何根据观看场景选择直播内容</h2>
+                <p class="section-sub">从类型差异、场景匹配和比较维度三个层面，说明选择直播内容时可以关注的要素。</p>
+
+                <h3>类型差异：赛事解说与游戏直播的节奏不同</h3>
+                <p>赛事解说通常围绕一场或多场比赛展开，信息密度较高，适合想深入理解比赛进程的观众。它的节奏由赛程决定，解说会跟随关键节点推进，中途暂停较少。游戏直播则更依赖主播个人的节奏，单局时长、互动频率和内容强度差异较大，适合按自己的时间碎片灵活选择。</p>
+                <p>如果你更在意“看懂比赛”，可以优先关注带有战术拆解标签的解说内容；如果你更在意“陪伴感”，慢节奏游戏直播或睡前陪伴类内容会更贴合。</p>
+
+                <h3>场景匹配：通勤追播与睡前陪伴的关注点不同</h3>
+                <p>通勤场景下，观看时间往往被切分成若干小段，适合选择单局时长短、信息相对独立的直播条目。通勤追播类内容通常会标注单局时长和是否适合分段观看，方便你在到站时随时停下。</p>
+                <p>睡前场景则更看重氛围和语速。睡前陪伴类直播通常节奏舒缓、互动温和，背景音和画面变化较少。选择时可以留意条目中是否标注“慢节奏”“低强度”等关键词，这类标签能帮助快速判断。</p>
+                <div class="highlight-box">
+                    <strong>选择小提示：</strong>先确定观看场景（通勤、午休、睡前），再按类型标签缩小范围，最后用看点描述确认内容强度是否合适。三步下来基本能定位到符合当下需求的直播方向。
+                </div>
+
+                <h3>比较维度：判断不同直播风格是否适合自己</h3>
+                <p>面对多个同类直播时，可以从以下几个维度做比较：</p>
+                <ul>
+                    <li><strong>解说密度：</strong>高密度解说信息量大，但需要更专注；低密度解说更轻松，适合背景播放。</li>
+                    <li><strong>更新节奏：</strong>每日更新适合追更，不定期更新更适合随缘观看。</li>
+                    <li><strong>互动方式：</strong>有的直播以弹幕互动为主，有的以主播单向讲解为主，选择时看自己更偏好哪种氛围。</li>
+                    <li><strong>完结状态：</strong>连续追更的内容需要确认是否已完结或是否有固定更新周期。</li>
+                </ul>
+                <p>页面中的热门推荐和用户评论分别从条目概览和观众反馈两个角度提供了比较依据。结合卡片的类型标签、看点描述和评论中的具体体验，可以更全面地判断某类内容是否符合自己的观看习惯。</p>
+
+                <h3>内容消费的常见选择路径</h3>
+                <p>多数观众会从热门推荐进入，先通过卡片标签和看点锁定感兴趣的方向，再进入分类页进一步筛选。如果对某个类型不确定，FAQ 和体验指南提供了更具体的说明。相关推荐标签则适合在看完一个方向后，顺带发现邻近类型的内容。</p>
+            </section>
+
+            <!-- 6. 体验指南 -->
+            <section class="section" id="guide">
+                <h2>体验指南：页面结构与使用路径</h2>
+                <p class="section-sub">说明如何通过导航、筛选和搜索快速找到想看的直播内容。</p>
+                <ol class="guide-steps">
+                    <li><strong>使用顶部导航定位板块。</strong>页头导航按热门推荐、最新更新、直播分类、深度解析等划分，点击即可跳转到对应区域，适合已有明确方向的观众。</li>
+                    <li><strong>通过左栏频道与标签缩小范围。</strong>左栏频道导航列出主要板块，热门标签按类型和场景归类，点击标签可快速定位到相关内容。</li>
+                    <li><strong>在分类入口按类型筛选。</strong>直播分类区域按“新赛季赛事”“游戏直播”“赛事解说”“睡前陪伴”等类别组织，选择对应类别可查看该方向的内容。</li>
+                    <li><strong>利用搜索框查找具体内容。</strong>页头搜索框支持在当前页面可见文字中查找关键词，输入直播类型或内容名称后回车即可，无匹配时会给出反馈提示。</li>
+                    <li><strong>移动端浏览。</strong>在手机上，左栏频道会转为可横向浏览的紧凑列表，主内容按顺序排列，搜索框在小屏下隐藏，不影响正文阅读。</li>
+                    <li><strong>延伸阅读路径。</strong>看完热门推荐后，可继续浏览相关推荐标签或相关资讯，从邻近方向发现更多内容。</li>
+                </ol>
+            </section>
+
+            <!-- 7. FAQ -->
+            <section class="section" id="faq">
+                <h2>常见问题：关于直播内容与观看选择</h2>
+                <p class="section-sub">围绕类型选择、更新节奏和观看场景的常见疑问。</p>
+
+                <details class="faq-item">
+                    <summary>赛事解说类内容适合什么人看？</summary>
+                    <div class="faq-answer">适合想看懂比赛进程、了解战术思路的观众。如果刚接触赛事，可以从“新人向赛事导览”类内容入手，熟悉基本规则后再看深度拆解。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>睡前陪伴直播一般什么节奏？</summary>
+                    <div class="faq-answer">睡前陪伴类直播通常节奏舒缓，语速较慢，画面变化少，互动以轻声交流为主。适合作为入睡前的背景内容，不需要连续专注观看。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>通勤路上看什么类型的直播比较合适？</summary>
+                    <div class="faq-answer">建议选择单局时长短、信息相对独立的条目，例如“短局快节奏直播合集”或标注了分段观看的午间休闲局。这样到站时可随时暂停，不必担心错过关键段落。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>游戏直播和赛事解说哪个更适合休闲观看？</summary>
+                    <div class="faq-answer">两者都可以，取决于你对信息密度的偏好。游戏直播的单局节奏和主播风格差异较大，休闲类条目通常更轻松；赛事解说信息更集中，适合想认真看一场比赛的时段。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>直播内容一般多久更新一次？</summary>
+                    <div class="faq-answer">不同条目更新节奏不同。热门推荐和最新更新区域会标注示例更新状态，例如“今日”“昨晚”等。连续追更的内容建议先确认是否有固定更新周期。</div>
+                </details>
+                <details class="faq-item">
+                    <summary>怎么比较两个同类型直播哪个更适合自己？</summary>
+                    <div class="faq-answer">可以从解说密度、更新节奏、互动方式和完结状态四个维度对比。卡片的类型标签和看点描述提供了初步信息，用户评论中的具体体验可以作为补充参考。</div>
+                </details>
+            </section>
+
+            <!-- 8. 用户评论 -->
+            <section class="section" id="comments">
+                <h2>用户评论：观众对直播内容的真实反馈</h2>
+                <p class="section-sub">以下为示例评论，昵称与内容仅用于展示评论板块结构。</p>
+                <div class="comment-list">
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">林</span><span class="comment-name">林间有风</span><span class="comment-stars">★★★★★</span></div>
+                        <p class="comment-text">新赛季解说的战术拆解做得很细，中期换线那一段反复看了两遍，终于看懂了。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">陈</span><span class="comment-name">陈小跑</span><span class="comment-stars">★★★★☆</span></div>
+                        <p class="comment-text">午间休闲局很适合通勤，单局短，到公司刚好停下，不用惦记后续。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">苏</span><span class="comment-name">苏打气泡</span><span class="comment-stars">★★★★★</span></div>
+                        <p class="comment-text">睡前陪伴直播的语速很舒服，背景音也不吵，最近基本每晚都开着听。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">周</span><span class="comment-name">周末不加班</span><span class="comment-stars">★★★☆☆</span></div>
+                        <p class="comment-text">焦点对决复盘的两套解说对比挺有意思，不过个别段落节奏偏快，需要暂停跟上。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">何</span><span class="comment-name">何同学</span><span class="comment-stars">★★★★☆</span></div>
+                        <p class="comment-text">新人向导览对刚看比赛的人很友好，规则讲得通俗，看完再去看正式解说顺畅多了。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">唐</span><span class="comment-name">唐糖</span><span class="comment-stars">★★★★★</span></div>
+                        <p class="comment-text">慢节奏建造直播真的很解压，画面清爽，主播说话也不紧不慢。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">赵</span><span class="comment-name">赵大锤</span><span class="comment-stars">★★★★☆</span></div>
+                        <p class="comment-text">冲分实录的选角思路讲得清楚，失误复盘也不藏着，参考价值不错。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">吴</span><span class="comment-name">吴聊</span><span class="comment-stars">★★★☆☆</span></div>
+                        <p class="comment-text">分类标签挺全的，就是有时候同类条目太多，挑起来要花点时间。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">郑</span><span class="comment-name">郑在看</span><span class="comment-stars">★★★★★</span></div>
+                        <p class="comment-text">短局合集对碎片时间太友好了，等车的时候看一局刚刚好。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">冯</span><span class="comment-name">冯小满</span><span class="comment-stars">★★★★☆</span></div>
+                        <p class="comment-text">解说密度高的内容适合周末认真看，平时通勤还是更喜欢轻松一点的。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">褚</span><span class="comment-name">褚橙</span><span class="comment-stars">★★★★★</span></div>
+                        <p class="comment-text">深夜场互动环节调整后更安静了，确实更适合睡前。</p>
+                    </div>
+                    <div class="comment-item">
+                        <div class="comment-head"><span class="avatar">卫</span><span class="comment-name">卫什么</span><span class="comment-stars">★★★★☆</span></div>
+                        <p class="comment-text">希望完结直播的标注能再明显一点，追更的时候好判断要不要从头看。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 9. 相关资讯 -->
+            <section class="section" id="news">
+                <h2>相关资讯：直播内容与赛事动态</h2>
+                <p class="section-sub">近期与直播内容消费相关的示例资讯，日期仅用于展示格式。</p>
+
+                <div class="news-item">
+                    <div class="news-head"><span class="news-title">新赛季解说阵容调整，战术拆解比重增加</span><span class="news-date">2025-03-18</span></div>
+                    <p class="news-summary">新赛季的解说内容更侧重战术层面的逐步拆解，部分场次加入了双视角对照，方便观众比较不同解说风格。</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-head"><span class="news-title">通勤时段直播观看习惯变化观察</span><span class="news-date">2025-03-12</span></div>
+                    <p class="news-summary">短局和分段观看内容在通勤时段更受欢迎，观众更倾向于选择单局时间明确、随时可停的直播条目。</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-head"><span class="news-title">睡前陪伴类直播的内容偏好小结</span><span class="news-date">2025-03-06</span></div>
+                    <p class="news-summary">慢节奏、低强度、语速平缓是睡前场景下观众提及较多的关键词，互动环节的安静程度也受到关注。</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-head"><span class="news-title">赛事解说新人向内容的需求上升</span><span class="news-date">2025-02-27</span></div>
+                    <p class="news-summary">面向新观众的规则讲解和看点导览类内容需求有所增加，通俗表达和分段讲解是这类内容的主要特点。</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-head"><span class="news-title">游戏直播单局时长与观看完成率的关系</span><span class="news-date">2025-02-19</span></div>
+                    <p class="news-summary">单局时长较短的直播在碎片时间场景下完成率更高，标注单局时长的条目也更便于观众安排观看。</p>
+                </div>
+                <div class="news-item">
+                    <div class="news-head"><span class="news-title">直播分类标签的使用倾向观察</span><span class="news-date">2025-02-11</span></div>
+                    <p class="news-summary">观众更倾向于点击带有具体场景词和类型词的分类标签，抽象栏目名的点击率相对较低。</p>
+                </div>
+            </section>
+
+            <!-- 10. 相关推荐 -->
+            <section class="section" id="reco">
+                <h2>相关推荐：按内容方向延伸</h2>
+                <p class="section-sub">以下标签指向具体内容方向，点击可定位到对应板块。</p>
+                <div class="reco-tags">
+                    <a href="/#hot">新赛季赛事解说</a>
+                    <a href="/#hot">睡前陪伴直播</a>
+                    <a href="/#hot">通勤短局合集</a>
+                    <a href="/#hot">战术复盘分析</a>
+                    <a href="/#hot">新人向赛事导览</a>
+                    <a href="/#hot">慢节奏建造直播</a>
+                    <a href="/#hot">焦点对决双视角</a>
+                    <a href="/#hot">冲分实录</a>
+                </div>
+            </section>
+
+            <!-- 11. 趋势观察 -->
+            <section class="section" id="trend">
+                <h2>趋势观察：直播内容消费的近期变化</h2>
+                <p class="section-sub">从类型偏好与观看场景两个角度，整理近期内容消费方向的变化。</p>
+                <ul class="timeline">
+                    <li><strong>场景细分更明显。</strong>通勤、午休、睡前三个场景对应的内容偏好差异扩大，标注具体场景的条目更容易被选中。</li>
+                    <li><strong>比较需求增加。</strong>同一场比赛出现多种解说视角时，观众更关注风格差异和适用人群，而不仅是内容本身。</li>
+                    <li><strong>短局内容受青睐。</strong>单局时长在十分钟左右的内容在碎片时间场景下表现更稳定。</li>
+                    <li><strong>陪伴属性被重视。</strong>睡前和深夜场景中，语速、背景音和互动安静程度成为观众选择的重要参考。</li>
+                    <li><strong>新人向内容持续补充。</strong>规则讲解和入门导览类内容帮助新观众降低理解门槛，也带动了后续深度内容的观看。</li>
+                </ul>
+            </section>
+
+        </main>
+
+        <!-- 右栏 -->
+        <aside class="sidebar-right" aria-label="辅助阅读入口">
+            <div class="side-card">
+                <h3>页内目录</h3>
+                <ul class="toc-list">
+                    <li><a href="/#intro">内容简介</a></li>
+                    <li><a href="/#hot">热门内容推荐</a></li>
+                    <li><a href="/#latest">最新更新</a></li>
+                    <li><a href="/#cats">直播分类</a></li>
+                    <li><a href="/#deep">深度解析</a></li>
+                    <li><a href="/#guide">体验指南</a></li>
+                    <li><a href="/#faq">常见问题</a></li>
+                    <li><a href="/#comments">用户评论</a></li>
+                    <li><a href="/#news">相关资讯</a></li>
+                    <li><a href="/#reco">相关推荐</a></li>
+                    <li><a href="/#trend">趋势观察</a></li>
+                </ul>
+            </div>
+            <div class="side-card">
+                <h3>热门条目</h3>
+                <div class="hot-item">
+                    <span class="hot-rank top">1</span>
+                    <div class="hot-text"><b>新赛季揭幕战解说</b>战术拆解全程，热度 9.2 万</div>
+                </div>
+                <div class="hot-item">
+                    <span class="hot-rank top">2</span>
+                    <div class="hot-text"><b>焦点对决复盘对比</b>两套解说风格对照</div>
+                </div>
+                <div class="hot-item">
+                    <span class="hot-rank">3</span>
+                    <div class="hot-text"><b>新赛季冲分实录</b>段位进阶完整记录</div>
+                </div>
+                <div class="hot-item">
+                    <span class="hot-rank">4</span>
+                    <div class="hot-text"><b>午间休闲局连播</b>轻量游戏短局合集</div>
+                </div>
+                <div class="hot-item">
+                    <span class="hot-rank">5</span>
+                    <div class="hot-text"><b>深夜陪伴直播</b>低强度放松向</div>
+                </div>
+            </div>
+            <div class="side-card">
+                <h3>延伸阅读</h3>
+                <ul class="ext-link-list">
+                    <li><a href="/#deep">赛事解说与游戏直播节奏差异</a></li>
+                    <li><a href="/#guide">通勤观看的筛选方法</a></li>
+                    <li><a href="/#faq">睡前陪伴内容常见问题</a></li>
+                    <li><a href="/#trend">近期内容消费趋势</a></li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+<!-- 页尾 -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="brand-name">91<span>直播</span></span>
+                <p>聚合游戏直播、赛事解说与睡前陪伴内容的门户页面，按类型与场景组织，帮助观众快速定位想看的直播方向。</p>
+            </div>
+            <div class="footer-col">
+                <h4>内容板块</h4>
+                <ul>
+                    <li><a href="/#hot">热门内容推荐</a></li>
+                    <li><a href="/#latest">最新更新</a></li>
+                    <li><a href="/#cats">直播分类</a></li>
+                    <li><a href="/#deep">深度解析</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>使用帮助</h4>
+                <ul>
+                    <li><a href="/#guide">体验指南</a></li>
+                    <li><a href="/#faq">常见问题</a></li>
+                    <li><a href="/#comments">用户评论</a></li>
+                    <li><a href="/#news">相关资讯</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 91直播 · 页面内容仅用于结构展示</span>
+            <span class="example-note">部分内容为示例数据，仅用于展示页面结构</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    (function () {
+        var searchInput = document.getElementById('siteSearch');
+        var searchBtn = document.getElementById('searchBtn');
+        var noResultTip = null;
+
+        function clearHighlight() {
+            document.querySelectorAll('.search-hit').forEach(function (el) {
+                el.classList.remove('search-hit');
+                el.style.outline = '';
+                el.style.background = '';
+            });
+        }
+
+        function showNoResult() {
+            if (!noResultTip) {
+                noResultTip = document.createElement('div');
+                noResultTip.id = 'noResultTip';
+                noResultTip.style.cssText = 'position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#2d2f5e;color:#fff;padding:10px 24px;border-radius:30px;font-size:13px;z-index:2000;box-shadow:0 6px 20px rgba(0,0,0,0.25);transition:opacity 0.25s;';
+                document.body.appendChild(noResultTip);
+            }
+            noResultTip.textContent = '未找到匹配内容，试试「赛事解说」「睡前陪伴」或「通勤追播」';
+            noResultTip.style.opacity = '1';
+            clearTimeout(noResultTip._timer);
+            noResultTip._timer = setTimeout(function () {
+                noResultTip.style.opacity = '0';
+            }, 2600);
+        }
+
+        function doSearch() {
+            var q = (searchInput.value || '').trim();
+            clearHighlight();
+            if (!q) return;
+            var lower = q.toLowerCase();
+            var found = false;
+            var mainCol = document.querySelector('.main-col');
+            if (!mainCol) return;
+            var walker = document.createTreeWalker(mainCol, NodeFilter.SHOW_TEXT, null, false);
+            var textNodes = [];
+            var node;
+            while ((node = walker.nextNode())) {
+                if (node.nodeValue && node.nodeValue.toLowerCase().indexOf(lower) !== -1) {
+                    textNodes.push(node);
+                }
+            }
+            textNodes.forEach(function (tn) {
+                var parent = tn.parentElement;
+                if (parent && (parent.tagName === 'SCRIPT' || parent.tagName === 'STYLE')) return;
+                var wrapper = parent.closest('.content-card, .update-list li, .faq-item, .news-item, .comment-item, .cat-item, .reco-tags a, .timeline li, .guide-steps li, p, h3, h4');
+                if (wrapper) {
+                    wrapper.classList.add('search-hit');
+                    wrapper.style.outline = '2px solid #e63946';
+                    wrapper.style.outlineOffset = '2px';
+                    wrapper.style.background = '#fff8f8';
+                    wrapper.style.borderRadius = '6px';
+                    found = true;
+                } else {
+                    parent.style.outline = '2px solid #e63946';
+                    parent.style.outlineOffset = '2px';
+                    parent.style.background = '#fff8f8';
+                    parent.style.borderRadius = '6px';
+                    found = true;
+                }
+            });
+            if (!found) {
+                showNoResult();
+            }
+        }
+
+        if (searchBtn) {
+            searchBtn.addEventListener('click', doSearch);
+        }
+        if (searchInput) {
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    doSearch();
+                }
+            });
+        }
+        // 点击页面其他区域清除高亮
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.header-search')) return;
+            clearHighlight();
+        });
+    })();
+</script>
+
+</body>
+                  </html>
