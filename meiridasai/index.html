@@ -1,0 +1,1420 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日大赛twitter网站-赛事主题分类_参赛场景指南_平台对比参考</title>
+  <meta name="description" content="每日大赛twitter网站是聚合Twitter平台每日创意赛事的导航型门户。提供摄影、插画、短视频等主题分类、参赛时间说明与热门作品速览，适合习惯在Twitter发现比赛、参与投稿的内容创作者与围观用户。">
+  <meta name="keywords" content="Twitter赛事聚合,创意大赛日历,线上投稿比赛,赛程速览,参赛作品精选">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f2b3c'/%3E%3Cpath d='M9 22 L16 8 L23 22' stroke='%23ffb703' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2.2' fill='%23ffb703'/%3E%3C/svg%3E">
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --surface-soft: #f0f4f9;
+      --ink: #1a2b3c;
+      --ink-secondary: #3e5468;
+      --muted: #6f8499;
+      --line: #dee7f0;
+      --brand: #0f2b3c;
+      --brand-soft: #1b415d;
+      --accent: #e07a1f;
+      --accent-soft: #fdf0e3;
+      --gold: #b8860b;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 2px 6px rgba(15, 43, 60, 0.06);
+      --shadow-md: 0 6px 18px rgba(15, 43, 60, 0.08);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --sticky-height: 96px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--brand-soft);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    ul, ol {
+      padding-left: 1.2em;
+    }
+
+    /* ---- 吸顶公告条 ---- */
+    .announce-bar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: linear-gradient(90deg, #0f2b3c 0%, #1b415d 100%);
+      color: #fff;
+      font-size: 13px;
+      padding: 8px 24px;
+      text-align: center;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .announce-bar strong {
+      color: #ffd27a;
+      font-weight: 600;
+    }
+
+    /* ---- 页头吸顶 ---- */
+    .site-header {
+      position: sticky;
+      top: 37px;
+      z-index: 55;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      padding: 0 24px;
+    }
+    .header-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      height: 58px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .brand svg {
+      width: 34px;
+      height: 34px;
+      display: block;
+    }
+    .brand-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: 0.2px;
+      line-height: 1.2;
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+    .header-nav a {
+      font-size: 14px;
+      color: var(--ink-secondary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .header-nav a:hover {
+      background: var(--surface-soft);
+      color: var(--brand);
+    }
+    .header-search {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 2px 4px 2px 14px;
+      flex-shrink: 0;
+    }
+    .header-search input {
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      padding: 5px 0;
+      width: 120px;
+      outline: none;
+      color: var(--ink);
+    }
+    .header-search input::placeholder {
+      color: var(--muted);
+    }
+    .header-search button {
+      background: var(--brand);
+      border: none;
+      color: #fff;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .header-search button:hover {
+      background: var(--brand-soft);
+    }
+
+    /* ---- 首屏 ---- */
+    .hero {
+      background: linear-gradient(135deg, #0f2b3c 0%, #1b415d 60%, #265a7a 100%);
+      color: #fff;
+      padding: 44px 24px 40px;
+    }
+    .hero-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1 1 420px;
+    }
+    .hero-kicker {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffd27a;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .hero h1 {
+      font-size: 38px;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .hero-desc {
+      font-size: 15px;
+      color: #d4e2ee;
+      max-width: 640px;
+      margin-bottom: 22px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #ffb703;
+      color: #1a2b3c;
+      font-weight: 600;
+      padding: 10px 26px;
+      border-radius: 30px;
+      font-size: 14px;
+      transition: transform 0.15s, background 0.15s;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #ffc93c;
+      color: #1a2b3c;
+      transform: translateY(-1px);
+    }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      transition: background 0.15s;
+      display: inline-block;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+    .hero-visual {
+      flex: 0 1 360px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-visual svg {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
+    }
+
+    /* ---- 三栏布局 ---- */
+    .layout {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 28px 24px 40px;
+      display: grid;
+      grid-template-columns: 176px minmax(0, 1fr) 240px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ---- 左栏 ---- */
+    .sidebar-left {
+      position: sticky;
+      top: calc(37px + 58px + 16px);
+    }
+    .side-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 16px 14px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .side-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .side-nav-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .side-nav-list a {
+      display: block;
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      color: var(--ink-secondary);
+      transition: background 0.12s;
+    }
+    .side-nav-list a:hover {
+      background: var(--surface-soft);
+      color: var(--brand);
+    }
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag-cloud a {
+      font-size: 12px;
+      background: var(--surface-soft);
+      color: var(--ink-secondary);
+      padding: 3px 10px;
+      border-radius: 14px;
+      transition: background 0.12s, color 0.12s;
+    }
+    .tag-cloud a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* ---- 中栏 ---- */
+    .main-col {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      min-width: 0;
+    }
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 26px 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .intro-text p {
+      margin-bottom: 12px;
+      font-size: 14.5px;
+      color: var(--ink-secondary);
+      line-height: 1.8;
+    }
+    .intro-text p:last-child {
+      margin-bottom: 0;
+    }
+    .intro-text strong {
+      color: var(--brand);
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .content-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      background: var(--surface);
+      transition: box-shadow 0.15s, border-color 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .content-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #c5d5e5;
+    }
+    .content-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--brand);
+      line-height: 1.35;
+    }
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .card-tag {
+      background: var(--surface-soft);
+      padding: 1px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      color: var(--ink-secondary);
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: var(--ink-secondary);
+      line-height: 1.55;
+      flex: 1;
+    }
+    .card-stats {
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      gap: 12px;
+    }
+
+    /* 紧凑列表 */
+    .compact-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .compact-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 13.5px;
+      align-items: baseline;
+      border-bottom: 1px dashed var(--line);
+      padding-bottom: 8px;
+    }
+    .compact-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .compact-list .li-title {
+      font-weight: 600;
+      color: var(--brand);
+      flex-shrink: 0;
+      font-size: 13.5px;
+    }
+    .compact-list .li-desc {
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .category-item {
+      background: var(--surface-soft);
+      border-radius: var(--radius-sm);
+      padding: 12px 10px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--brand);
+      transition: background 0.15s, color 0.15s;
+      border: 1px solid transparent;
+    }
+    .category-item:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: #f0c89a;
+    }
+
+    /* 深度解析 */
+    .deep-dive h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--brand);
+      margin: 20px 0 8px;
+    }
+    .deep-dive h3:first-of-type {
+      margin-top: 0;
+    }
+    .deep-dive p {
+      font-size: 14.5px;
+      color: var(--ink-secondary);
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+    .deep-dive ul, .deep-dive ol {
+      font-size: 14px;
+      color: var(--ink-secondary);
+      margin: 8px 0 14px 18px;
+      line-height: 1.8;
+    }
+    .deep-dive li {
+      margin-bottom: 4px;
+    }
+    .deep-dive .highlight-box {
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin: 14px 0;
+      font-size: 13.5px;
+      color: #5c3d1a;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--brand);
+      padding: 12px 16px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.12s;
+    }
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 18px;
+      color: var(--accent);
+      font-weight: 400;
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after {
+      content: '−';
+    }
+    .faq-item summary:hover {
+      background: var(--surface-soft);
+    }
+    .faq-answer {
+      padding: 0 16px 14px;
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+      line-height: 1.75;
+    }
+
+    /* 评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .comment-item {
+      background: var(--surface-soft);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+    .comment-item .nickname {
+      font-weight: 600;
+      color: var(--brand);
+      font-size: 12.5px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .comment-item .nickname span {
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 11px;
+      margin-left: 6px;
+    }
+
+    /* 资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .news-item {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+    .news-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .news-item h3 {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--brand);
+      margin-bottom: 4px;
+    }
+    .news-date {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .news-summary {
+      font-size: 13px;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+
+    /* 相关推荐 */
+    .rec-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .rec-tags a {
+      font-size: 13px;
+      background: var(--surface-soft);
+      padding: 6px 16px;
+      border-radius: 20px;
+      color: var(--ink-secondary);
+      transition: background 0.12s, color 0.12s;
+      border: 1px solid transparent;
+    }
+    .rec-tags a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: #f0c89a;
+    }
+
+    /* 时间线 / 趋势 */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      padding-left: 22px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--line);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 16px;
+      font-size: 13.5px;
+      color: var(--ink-secondary);
+    }
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--surface);
+      box-shadow: 0 0 0 2px var(--accent-soft);
+    }
+    .timeline-item strong {
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    /* 右栏 */
+    .sidebar-right {
+      position: sticky;
+      top: calc(37px + 58px + 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .toc-list a {
+      font-size: 12.5px;
+      color: var(--ink-secondary);
+      display: block;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      border-left: 2px solid transparent;
+      transition: border-color 0.12s, background 0.12s;
+    }
+    .toc-list a:hover {
+      background: var(--surface-soft);
+      border-left-color: var(--accent);
+      color: var(--brand);
+    }
+    .hot-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hot-list li {
+      display: flex;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--ink-secondary);
+      align-items: baseline;
+    }
+    .hot-list .num {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 12px;
+      min-width: 18px;
+    }
+    .hot-list a {
+      color: var(--ink-secondary);
+    }
+    .hot-list a:hover {
+      color: var(--accent);
+    }
+
+    /* 页尾 */
+    .site-footer {
+      background: var(--brand);
+      color: #b8cddd;
+      padding: 40px 24px 24px;
+      margin-top: 20px;
+    }
+    .footer-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: space-between;
+    }
+    .footer-brand {
+      flex: 1 1 260px;
+    }
+    .footer-brand .brand-text {
+      color: #fff;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #8faabf;
+      max-width: 320px;
+    }
+    .footer-cols {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 12.5px;
+      color: #8faabf;
+      padding: 3px 0;
+    }
+    .footer-col a:hover {
+      color: #ffd27a;
+    }
+    .footer-bottom {
+      max-width: 1380px;
+      margin: 28px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 11.5px;
+      color: #6f8499;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    /* 锚点偏移 */
+    [id] {
+      scroll-margin-top: calc(37px + 58px + 12px);
+    }
+
+    /* 无结果提示 */
+    .no-result {
+      display: none;
+      padding: 16px;
+      background: var(--surface-soft);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .no-result.show {
+      display: block;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1100px) {
+      .layout {
+        grid-template-columns: 160px minmax(0, 1fr);
+      }
+      .sidebar-right {
+        display: none;
+      }
+    }
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar-left {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .sidebar-left .side-card {
+        flex: 1 1 200px;
+        margin-bottom: 0;
+      }
+      .header-inner {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 8px 0;
+      }
+      .header-search {
+        margin-left: 0;
+        order: 3;
+        width: 100%;
+      }
+      .header-search input {
+        width: 100%;
+      }
+      .hero h1 {
+        font-size: 28px;
+      }
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .comment-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero {
+        padding: 30px 16px;
+      }
+      .section-card {
+        padding: 18px 16px;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .category-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .announce-bar {
+        font-size: 11px;
+        padding: 6px 12px;
+      }
+      .site-header {
+        top: 31px;
+      }
+      .header-nav a {
+        font-size: 12px;
+        padding: 3px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 吸顶公告条 -->
+  <div class="announce-bar">
+    <strong>每日大赛twitter网站</strong> · 本周新增 6 场主题赛事 · 摄影 / 插画 / 短视频赛道同步开放
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="7" fill="#0f2b3c"/>
+          <path d="M9 22 L16 8 L23 22" stroke="#ffb703" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.2" fill="#ffb703"/>
+        </svg>
+        <span class="brand-text">每日大赛twitter网站</span>
+      </div>
+      <nav class="header-nav" aria-label="主题导航">
+        <a href="/#intro">赛事简介</a>
+        <a href="/#hot-picks">热门推荐</a>
+        <a href="/#latest">最新更新</a>
+        <a href="/#categories">分类入口</a>
+        <a href="/#deep-dive">深度解析</a>
+        <a href="/#faq">常见问题</a>
+      </nav>
+      <div class="header-search">
+        <input type="text" id="searchInput" placeholder="搜索赛事/分类..." aria-label="站内搜索">
+        <button id="searchBtn" type="button">搜索</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-kicker">Twitter 赛事聚合 · 每日更新</div>
+        <h1>每日大赛twitter网站</h1>
+        <p class="hero-desc">聚合 Twitter 平台每日创意赛事信息，覆盖摄影、插画、短视频、文案四大赛道。提供赛程速览、主题分类、参赛作品精选与投稿时间提醒，适合在 Twitter 发现比赛、寻找灵感的内容创作者和围观用户。</p>
+        <div class="hero-actions">
+          <a href="/#hot-picks" class="btn-primary">浏览今日热门赛事</a>
+          <a href="/#categories" class="btn-ghost">按分类筛选</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg viewBox="0 0 340 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="30" width="300" height="180" rx="16" fill="#1b415d" stroke="#2c5a78" stroke-width="1.5"/>
+          <rect x="40" y="52" width="120" height="10" rx="5" fill="#ffb703" opacity="0.9"/>
+          <rect x="40" y="72" width="200" height="8" rx="4" fill="#3e6e8f"/>
+          <rect x="40" y="90" width="160" height="8" rx="4" fill="#3e6e8f"/>
+          <rect x="40" y="118" width="80" height="36" rx="8" fill="#265a7a"/>
+          <rect x="132" y="118" width="80" height="36" rx="8" fill="#265a7a"/>
+          <rect x="224" y="118" width="76" height="36" rx="8" fill="#265a7a"/>
+          <circle cx="80" cy="136" r="8" fill="#ffb703" opacity="0.7"/>
+          <circle cx="172" cy="136" r="8" fill="#ffb703" opacity="0.5"/>
+          <circle cx="262" cy="136" r="8" fill="#ffb703" opacity="0.3"/>
+          <rect x="40" y="170" width="260" height="2" rx="1" fill="#2c5a78"/>
+          <text x="80" y="185" fill="#8faabf" font-size="9" font-family="sans-serif">摄影</text>
+          <text x="172" y="185" fill="#8faabf" font-size="9" font-family="sans-serif">插画</text>
+          <text x="262" y="185" fill="#8faabf" font-size="9" font-family="sans-serif">短视频</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三栏主内容区 -->
+  <div class="layout">
+
+    <!-- 左栏 -->
+    <aside class="sidebar-left">
+      <div class="side-card">
+        <div class="side-title">频道导航</div>
+        <ul class="side-nav-list">
+          <li><a href="/#intro">赛事简介</a></li>
+          <li><a href="/#hot-picks">热门内容推荐</a></li>
+          <li><a href="/#latest">最新更新动态</a></li>
+          <li><a href="/#categories">分类入口</a></li>
+          <li><a href="/#deep-dive">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">用户评论</a></li>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#related">相关推荐</a></li>
+          <li><a href="/#timeline">赛事时间线</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <div class="side-title">热门标签</div>
+        <div class="tag-cloud">
+          <a href="/#hot-picks">#摄影赛事</a>
+          <a href="/#hot-picks">#插画挑战</a>
+          <a href="/#hot-picks">#短视频创作</a>
+          <a href="/#latest">#今日截稿</a>
+          <a href="/#categories">#新手友好</a>
+          <a href="/#categories">#高奖金池</a>
+          <a href="/#deep-dive">#评审标准</a>
+          <a href="/#faq">#投稿方式</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 中栏 -->
+    <main class="main-col">
+
+      <!-- 1. 内容简介 / 平台介绍 -->
+      <section class="section-card" id="intro">
+        <h2 class="section-title">赛事内容简介</h2>
+        <div class="intro-text">
+          <p><strong>每日大赛twitter网站</strong>是一个围绕 Twitter 平台每日创意赛事的信息聚合栏目。它把分散在不同账号和时间线上的比赛信息整理成可浏览、可筛选的条目，帮助用户在打开 Twitter 之前先了解今天有哪些主题赛事正在进行、哪些即将截稿、哪些适合自己参与。页面覆盖摄影、插画、短视频、文案四个主要方向，每个方向下再按“新手友好”“高奖金池”“品牌联名”等标签细分。</p>
+          <p>对于习惯在 Twitter 上寻找创作话题的用户来说，最常遇到的问题是信息流更新太快，一场比赛从发布到截稿可能只有三到五天，稍不注意就错过了。这个栏目把“赛事主题分类”“参赛场景指南”“平台对比参考”三类信息放在一起，让用户既能快速浏览今日赛程，也能在几个相似赛事之间做选择。摄影类赛事通常要求单张或组图投稿，插画类更看重风格一致性，短视频赛道则对时长和画幅有明确规定——这些差异在条目摘要中会直接点明。</p>
+          <p>页面内容按日更新，热门推荐和最新更新两个板块每天刷新，分类入口和深度解析保持相对稳定。用户可以通过站内搜索快速定位某个主题词，也可以从右侧目录跳转到具体板块。所有赛事信息均以示例条目的形式呈现，用于展示信息组织方式，不替代 Twitter 官方账号的实时公告。</p>
+        </div>
+      </section>
+
+      <!-- 2. 热门内容推荐 -->
+      <section class="section-card" id="hot-picks">
+        <h2 class="section-title">今日热门赛事推荐</h2>
+        <p class="section-sub">按热度与截稿时间综合排序，每条包含主题、标签与看点摘要。</p>
+        <div class="card-grid" id="hotCards">
+          <div class="content-card">
+            <h3>城市光影摄影赛</h3>
+            <div class="card-meta">
+              <span class="card-tag">摄影</span>
+              <span class="card-tag">城市街拍</span>
+              <span class="card-tag">单张投稿</span>
+            </div>
+            <p class="card-desc">以“城市与光”为主题，要求捕捉街角自然光或夜间霓虹。评审看重构图层次与光影叙事，适合有街拍经验的摄影师。</p>
+            <div class="card-stats"><span>热度 9.2</span><span>截稿 3 天</span></div>
+          </div>
+          <div class="content-card">
+            <h3>角色设计周挑战</h3>
+            <div class="card-meta">
+              <span class="card-tag">插画</span>
+              <span class="card-tag">角色设定</span>
+              <span class="card-tag">三视图</span>
+            </div>
+            <p class="card-desc">每周公布一个关键词，本周为“机械植物”。需要提交角色三视图与一段背景说明，适合插画进阶练习者。</p>
+            <div class="card-stats"><span>热度 8.8</span><span>截稿 2 天</span></div>
+          </div>
+          <div class="content-card">
+            <h3>15 秒生活切片</h3>
+            <div class="card-meta">
+              <span class="card-tag">短视频</span>
+              <span class="card-tag">竖屏</span>
+              <span class="card-tag">日常记录</span>
+            </div>
+            <p class="card-desc">用 15 秒竖屏视频记录一个生活瞬间，强调画面节奏与声音设计。手机拍摄即可参与，适合短视频新手尝试。</p>
+            <div class="card-stats"><span>热度 8.5</span><span>截稿 4 天</span></div>
+          </div>
+          <div class="content-card">
+            <h3>一句话故事文案赛</h3>
+            <div class="card-meta">
+              <span class="card-tag">文案</span>
+              <span class="card-tag">微叙事</span>
+              <span class="card-tag">短文本</span>
+            </div>
+            <p class="card-desc">围绕给定图片写一句不超过 30 字的故事，评审关注留白与情绪落点。参与门槛低，适合文字爱好者。</p>
+            <div class="card-stats"><span>热度 8.1</span><span>截稿 1 天</span></div>
+          </div>
+          <div class="content-card">
+            <h3>夜景建筑构图赛</h3>
+            <div class="card-meta">
+              <span class="card-tag">摄影</span>
+              <span class="card-tag">建筑</span>
+              <span class="card-tag">长曝光</span>
+            </div>
+            <p class="card-desc">征集夜间建筑摄影作品，鼓励使用长曝光与对称构图。需附拍摄参数，适合有一定器材基础的摄影者。</p>
+            <div class="card-stats"><span>热度 7.9</span><span>截稿 5 天</span></div>
+          </div>
+          <div class="content-card">
+            <h3>像素风场景设计</h3>
+            <div class="card-meta">
+              <span class="card-tag">插画</span>
+              <span class="card-tag">像素艺术</span>
+              <span class="card-tag">场景</span>
+            </div>
+            <p class="card-desc">限定 64×64 画布内创作一个完整场景，考验概括能力与配色控制。适合像素画爱好者和游戏美术方向学习者。</p>
+            <div class="card-stats"><span>热度 7.6</span><span>截稿 6 天</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 -->
+      <section class="section-card" id="latest">
+        <h2 class="section-title">最新更新与截稿提醒</h2>
+        <p class="section-sub">过去 24 小时内新增或状态变化的赛事条目。</p>
+        <ul class="compact-list">
+          <li><span class="li-title">街头色彩摄影赛</span><span class="li-desc">今日 10:00 开放投稿，主题为“高饱和街区”，限三张组图。</span></li>
+          <li><span class="li-title">奇幻生物速写</span><span class="li-desc">命题公布：“深海发光生物”，48 小时限时创作，今晚截止。</span></li>
+          <li><span class="li-title">一分钟叙事短片</span><span class="li-desc">新增“无对白”限制，已投稿作品可撤回修改，截止日不变。</span></li>
+          <li><span class="li-title">微型小说接龙</span><span class="li-desc">第二轮关键词发布，参与人数已过 300，截稿倒计时 36 小时。</span></li>
+          <li><span class="li-title">黑白人像挑战</span><span class="li-desc">评审团新增两位人像摄影师，评分维度增加“情绪传达”。</span></li>
+          <li><span class="li-title">动态图形设计赛</span><span class="li-desc">作品格式要求更新，接受 GIF 与 MP4 两种提交方式。</span></li>
+          <li><span class="li-title">旧物改造摄影</span><span class="li-desc">本周主题“被遗忘的角落”，投稿量突破 200，热度上升中。</span></li>
+          <li><span class="li-title">手写字体设计赛</span><span class="li-desc">新增“可读性”评分项，允许提交扫描稿或数字稿。</span></li>
+        </ul>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section-card" id="categories">
+        <h2 class="section-title">赛事主题分类入口</h2>
+        <p class="section-sub">按创作类型快速定位适合你的赛道。</p>
+        <div class="category-grid">
+          <a href="/#hot-picks" class="category-item">城市街拍摄影</a>
+          <a href="/#hot-picks" class="category-item">人像与情绪</a>
+          <a href="/#hot-picks" class="category-item">角色插画设计</a>
+          <a href="/#hot-picks" class="category-item">场景与概念</a>
+          <a href="/#latest" class="category-item">竖屏短视频</a>
+          <a href="/#latest" class="category-item">一分钟叙事</a>
+          <a href="/#latest" class="category-item">微文案挑战</a>
+          <a href="/#latest" class="category-item">限时速写</a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析正文 -->
+      <section class="section-card deep-dive" id="deep-dive">
+        <h2 class="section-title">深度解析：如何选择适合你的 Twitter 赛事</h2>
+        <p>在 <strong>每日大赛twitter网站</strong> 浏览赛事时，面对同一时间出现的多场比赛，最直接的判断依据是“创作类型 + 时间成本 + 评审偏好”三个维度。下面分别展开，帮助你在不同情境下做出选择。</p>
+
+        <h3>一、按创作类型匹配你的产出能力</h3>
+        <p>Twitter 上的赛事大致分为影像类、绘画类、视频类和文字类。影像类通常要求单张或组图，后期空间有限，更看重拍摄时的判断；绘画类允许较长的创作周期，但命题往往很具体；视频类对设备和剪辑时间要求最高；文字类门槛最低，但竞争也最密集。</p>
+        <ul>
+          <li><strong>摄影方向：</strong>适合有相机或手机摄影习惯的人，投递前注意查看是否限制拍摄设备、是否允许后期合成。</li>
+          <li><strong>插画方向：</strong>适合有数位板或 iPad 的创作者，注意画布尺寸、提交格式和是否要求过程图。</li>
+          <li><strong>短视频方向：</strong>适合习惯竖屏表达的人，重点看时长、画幅、是否允许配乐。</li>
+          <li><strong>文案方向：</strong>适合文字敏感度高的人，注意字数上限和是否限定语言。</li>
+        </ul>
+
+        <h3>二、用截稿时间倒推参与策略</h3>
+        <p>大部分 Twitter 赛事从公布到截稿只有三到七天，限时赛甚至只有 24 到 48 小时。如果你的日常时间碎片化，优先选择截稿日在三天之后的赛事；如果当天有整块空闲，可以尝试限时速写或 15 秒短视频这类短周期项目。</p>
+        <div class="highlight-box">
+          <strong>实用判断：</strong>截稿倒计时少于 24 小时的赛事，更适合已有存稿或能快速成稿的人；新手建议从截稿 3 天以上的主题开始，留出修改和调整格式的时间。
+        </div>
+
+        <h3>三、看懂评审偏好再动笔</h3>
+        <p>同一个主题下，不同赛事的评审侧重点差异明显。有的强调“概念完整度”，有的更看重“视觉冲击力”，还有的把“参与互动量”计入评分。浏览赛事条目时，可以先看摘要里是否注明评审维度，再决定投入多少精力。</p>
+        <ol>
+          <li><strong>概念型赛事：</strong>通常要求附创作说明，评审会读你的思路，适合擅长叙事的人。</li>
+          <li><strong>视觉型赛事：</strong>以画面本身为主，说明文字只作辅助，适合完成度高、风格鲜明的人。</li>
+          <li><strong>人气型赛事：</strong>转发或点赞权重较高，需要预留时间做传播，适合有一定粉丝基础的用户。</li>
+        </ol>
+
+        <h3>四、在几个相似赛事之间做比较</h3>
+        <p>当两场比赛主题接近时，可以从“投稿成本”和“回报结构”两个角度对比。投稿成本包括作品数量、是否需要过程稿、是否必须首发；回报结构包括奖金、曝光资源、是否提供评审反馈。对于以练习为目的的用户，提供评审反馈的赛事往往比高奖金赛事更有长期价值。</p>
+        <p>另外，注意区分“品牌联名赛”和“社区自发赛”。前者流程规范、截止时间严格，后者氛围宽松、互动更多。两类赛事在 <strong>每日大赛twitter网站</strong> 的条目中会通过标签区分，浏览时留意卡片上的“品牌联名”或“社区赛事”标识即可。</p>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section class="section-card" id="guide">
+        <h2 class="section-title">浏览与参与体验指南</h2>
+        <p style="font-size:14px;color:var(--ink-secondary);margin-bottom:12px;">从进入页面到完成一次赛事筛选，可以按以下路径操作：</p>
+        <ol style="font-size:14px;color:var(--ink-secondary);line-height:1.9;padding-left:20px;">
+          <li><strong>先看首屏摘要：</strong>了解当前有哪些赛道开放，判断是否与自己相关。</li>
+          <li><strong>用分类入口缩小范围：</strong>点击摄影、插画、短视频或文案分类，快速定位到对应卡片区域。</li>
+          <li><strong>用站内搜索找具体主题：</strong>在页头搜索框输入“街拍”“角色设计”等词，页面会高亮匹配条目并隐藏无关卡片。</li>
+          <li><strong>查看深度解析：</strong>如果同时在几场比赛之间犹豫，跳到深度解析阅读评审偏好和投稿成本对比。</li>
+          <li><strong>关注最新更新：</strong>截稿时间或规则有变化的赛事会出现在最新更新列表，建议每天扫一眼。</li>
+          <li><strong>移动端使用：</strong>在手机上，左右侧栏会移到主内容下方或转为横向导航，核心卡片保持单列阅读，不影响检索。</li>
+        </ol>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section-card" id="faq">
+        <h2 class="section-title">常见问题</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Twitter 上的每日大赛一般多久更新一次？</summary>
+            <div class="faq-answer">多数主题赛事按周或按日更新，品牌联名赛通常提前三到五天公布，社区自发赛可能当天发布当天截稿。这个栏目每天整理一次新增和状态变化，热门推荐与最新更新两个板块保持日更。</div>
+          </details>
+          <details class="faq-item">
+            <summary>摄影类赛事和插画类赛事分别适合什么人看？</summary>
+            <div class="faq-answer">摄影类更适合有拍摄习惯、能快速出片的人，评审往往关注构图与光影；插画类适合有完整创作时间、能提交过程稿的绘画爱好者，命题通常更具体，对风格一致性要求更高。</div>
+          </details>
+          <details class="faq-item">
+            <summary>新手第一次参加 Twitter 赛事，选哪种类型比较稳？</summary>
+            <div class="faq-answer">可以从截稿时间三天以上、允许手机拍摄或数字绘制的赛事开始。文案类和单张摄影类的投稿成本最低，限时速写和短视频对成稿速度要求较高，建议有经验后再尝试。</div>
+          </details>
+          <details class="faq-item">
+            <summary>品牌联名赛和社区自发赛有什么区别？</summary>
+            <div class="faq-answer">品牌联名赛流程规范、评审维度明确、截止时间严格，通常附带奖金或曝光资源；社区自发赛氛围更宽松，互动权重高，适合以交流和练习为目的的参与者。两类赛事在本页条目中通过标签区分。</div>
+          </details>
+          <details class="faq-item">
+            <summary>怎么判断一场赛事是否值得投入时间？</summary>
+            <div class="faq-answer">先看评审维度是否与你的长处匹配，再看投稿成本（作品数量、是否要过程稿、是否限首发），最后看回报结构（奖金、曝光、评审反馈）。如果以练习为主，提供反馈的赛事通常比高奖金赛事更有长期价值。</div>
+          </details>
+          <details class="faq-item">
+            <summary>截稿倒计时很短的时候，还有参与的意义吗？</summary>
+            <div class="faq-answer">如果已有接近主题的存稿或能快速完成，可以尝试；如果需要从零开始且剩余时间不足半天，建议把精力留给下一场截稿时间更宽裕的赛事，避免为了赶时间牺牲完成度。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section-card" id="comments">
+        <h2 class="section-title">用户评论</h2>
+        <p class="section-sub">以下为示例评论，展示不同参与者的浏览反馈。</p>
+        <div class="comment-grid">
+          <div class="comment-item"><span class="nickname">街角快门 <span>摄影爱好者</span></span>每天先刷这里再看 Twitter，省得在时间线里翻半天。城市光影那场已经投稿了。</div>
+          <div class="comment-item"><span class="nickname">青柠不酸 <span>插画练习生</span></span>角色设计周挑战的命题挺有意思，三视图要求对新手有点压力，但说明写得很清楚。</div>
+          <div class="comment-item"><span class="nickname">十五秒阿哲 <span>视频创作者</span></span>短视频赛道的截稿提醒很实用，之前错过一次，现在每天看一眼最新更新。</div>
+          <div class="comment-item"><span class="nickname">文字铺子 <span>文案写手</span></span>一句话故事赛参与门槛低，适合练手。评论里有人说评审偏爱留白，确实有道理。</div>
+          <div class="comment-item"><span class="nickname">夜灯长曝 <span>摄影进阶</span></span>夜景建筑那场要求附拍摄参数，这点很专业，方便看别人怎么设置。</div>
+          <div class="comment-item"><span class="nickname">像素小方 <span>像素画爱好者</span></span>64×64 画布限制得很死，但反而好入手，不用想太多细节。</div>
+          <div class="comment-item"><span class="nickname">溪风 <span>路过看看</span></span>不参赛也能看热门作品摘要，当灵感库用，分类做得比较细。</div>
+          <div class="comment-item"><span class="nickname">木木夕 <span>插画师</span></span>深度解析里讲评审偏好那段有帮助，以前只顾着画，没注意赛事类型差异。</div>
+          <div class="comment-item"><span class="nickname">阿灰 <span>短视频新手</span></span>手机拍摄的赛事标注得比较清楚，对没有设备的人友好。</div>
+          <div class="comment-item"><span class="nickname">南岸 <span>摄影学生</span></span>黑白人像挑战新增了“情绪传达”评分，感觉更看氛围了，准备试试。</div>
+          <div class="comment-item"><span class="nickname">纸飞机 <span>文案爱好者</span></span>截稿倒计时标在卡片上很直观，不用点进去才知道还剩几天。</div>
+          <div class="comment-item"><span class="nickname">长夏 <span>综合创作</span></span>有时候几场比赛撞在同一天，深度解析里的对比方法挺实用的。</div>
+          <div class="comment-item"><span class="nickname">拾光 <span>街拍用户</span></span>希望以后能按“是否允许后期”筛选，目前分类已经够用。</div>
+          <div class="comment-item"><span class="nickname">一页舟 <span>插画爱好者</span></span>社区自发赛的标签区分得很好，不会和品牌赛混在一起看。</div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section-card" id="news">
+        <h2 class="section-title">赛事相关资讯</h2>
+        <div class="news-list">
+          <div class="news-item">
+            <h3>摄影赛道本周新增两场夜间主题赛事</h3>
+            <div class="news-date">2025-03-18</div>
+            <p class="news-summary">城市光影与夜景建筑两场赛事同期开放，均要求提交拍摄参数，评审团新增两位夜景方向摄影师。</p>
+          </div>
+          <div class="news-item">
+            <h3>插画周挑战调整提交规则</h3>
+            <div class="news-date">2025-03-17</div>
+            <p class="news-summary">角色设计周挑战允许在截止前撤回修改一次，三视图要求不变，新增“背景说明”字数上限为 150 字。</p>
+          </div>
+          <div class="news-item">
+            <h3>短视频赛事引入“无对白”限制主题</h3>
+            <div class="news-date">2025-03-16</div>
+            <p class="news-summary">一分钟叙事短片新增无对白分组，评审侧重画面节奏与声音设计，手机拍摄作品单独评选。</p>
+          </div>
+          <div class="news-item">
+            <h3>文案类赛事参与人数创周内新高</h3>
+            <div class="news-date">2025-03-15</div>
+            <p class="news-summary">一句话故事赛投稿量较上周增长四成，评审团表示将增加入围名额，结果公布时间不变。</p>
+          </div>
+          <div class="news-item">
+            <h3>像素画赛事延长截稿至周末</h3>
+            <div class="news-date">2025-03-14</div>
+            <p class="news-summary">像素风场景设计赛应参与者反馈，截稿日顺延两天，画布尺寸与提交格式要求保持不变。</p>
+          </div>
+          <div class="news-item">
+            <h3>品牌联名赛公布评审维度细化说明</h3>
+            <div class="news-date">2025-03-13</div>
+            <p class="news-summary">两场品牌联名赛事更新评分细则，概念完整度与视觉呈现各占四成，互动数据占两成。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section-card" id="related">
+        <h2 class="section-title">相关推荐与主题索引</h2>
+        <p class="section-sub">按具体内容方向整理的延伸入口。</p>
+        <div class="rec-tags">
+          <a href="/#hot-picks">城市街拍摄影赛</a>
+          <a href="/#hot-picks">角色三视图挑战</a>
+          <a href="/#hot-picks">15秒竖屏叙事</a>
+          <a href="/#latest">限时速写命题</a>
+          <a href="/#latest">黑白人像情绪表达</a>
+          <a href="/#latest">微文案留白技巧</a>
+          <a href="/#deep-dive">评审偏好对照</a>
+          <a href="/#faq">新手参赛路径</a>
+        </div>
+      </section>
+
+      <!-- 11. 时间线 -->
+      <section class="section-card" id="timeline">
+        <h2 class="section-title">本周赛事时间线</h2>
+        <p class="section-sub">按日期排列的截稿与开赛节点，帮助安排创作节奏。</p>
+        <div class="timeline">
+          <div class="timeline-item"><strong>3 月 18 日（周二）</strong> — 一句话故事文案赛截稿；街头色彩摄影赛开放投稿。</div>
+          <div class="timeline-item"><strong>3 月 19 日（周三）</strong> — 奇幻生物速写 48 小时限时赛截止；黑白人像挑战评审启动。</div>
+          <div class="timeline-item"><strong>3 月 20 日（周四）</strong> — 城市光影摄影赛截稿；角色设计周挑战进入投票阶段。</div>
+          <div class="timeline-item"><strong>3 月 21 日（周五）</strong> — 15 秒生活切片短视频赛截稿；像素风场景设计赛延长截止。</div>
+          <div class="timeline-item"><strong>3 月 22 日（周六）</strong> — 夜景建筑构图赛截稿；微型小说接龙第二轮结果公布。</div>
+          <div class="timeline-item"><strong>3 月 23 日（周日）</strong> — 本周赛事结果集中公布日，热门推荐板块同步更新下周预告。</div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右栏 -->
+    <aside class="sidebar-right">
+      <div class="side-card">
+        <div class="side-title">本页目录</div>
+        <ul class="toc-list">
+          <li><a href="/#intro">赛事内容简介</a></li>
+          <li><a href="/#hot-picks">今日热门赛事推荐</a></li>
+          <li><a href="/#latest">最新更新与截稿提醒</a></li>
+          <li><a href="/#categories">赛事主题分类入口</a></li>
+          <li><a href="/#deep-dive">深度解析</a></li>
+          <li><a href="/#guide">浏览与参与体验指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">用户评论</a></li>
+          <li><a href="/#news">赛事相关资讯</a></li>
+          <li><a href="/#related">相关推荐</a></li>
+          <li><a href="/#timeline">本周赛事时间线</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <div class="side-title">热门条目</div>
+        <ul class="hot-list">
+          <li><span class="num">01</span><a href="/#hot-picks">城市光影摄影赛 · 截稿 3 天</a></li>
+          <li><span class="num">02</span><a href="/#hot-picks">角色设计周挑战 · 截稿 2 天</a></li>
+          <li><span class="num">03</span><a href="/#hot-picks">15 秒生活切片 · 截稿 4 天</a></li>
+          <li><span class="num">04</span><a href="/#hot-picks">一句话故事文案赛 · 截稿 1 天</a></li>
+          <li><span class="num">05</span><a href="/#hot-picks">夜景建筑构图赛 · 截稿 5 天</a></li>
+        </ul>
+      </div>
+      <div class="side-card">
+        <div class="side-title">延伸阅读</div>
+        <ul class="side-nav-list">
+          <li><a href="/#deep-dive">评审偏好怎么看</a></li>
+          <li><a href="/#guide">新手从哪类开始</a></li>
+          <li><a href="/#faq">截稿倒计时怎么用</a></li>
+          <li><a href="/#timeline">本周赛程一览</a></li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- 页尾 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand-text">每日大赛twitter网站</div>
+        <p>聚合 Twitter 平台每日创意赛事信息，覆盖摄影、插画、短视频、文案四大赛道，提供赛程速览与主题分类索引。</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>赛事板块</h4>
+          <a href="/#intro">赛事简介</a>
+          <a href="/#hot-picks">热门推荐</a>
+          <a href="/#latest">最新更新</a>
+          <a href="/#categories">分类入口</a>
+        </div>
+        <div class="footer-col">
+          <h4>阅读辅助</h4>
+          <a href="/#deep-dive">深度解析</a>
+          <a href="/#guide">体验指南</a>
+          <a href="/#faq">常见问题</a>
+          <a href="/#timeline">赛事时间线</a>
+        </div>
+        <div class="footer-col">
+          <h4>互动与资讯</h4>
+          <a href="/#comments">用户评论</a>
+          <a href="/#news">相关资讯</a>
+          <a href="/#related">相关推荐</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 每日大赛twitter网站 · 内容聚合示例页</span>
+      <span>部分内容为示例数据，仅用于展示页面结构</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // 站内搜索
+      var searchInput = document.getElementById('searchInput');
+      var searchBtn = document.getElementById('searchBtn');
+      var hotCards = document.getElementById('hotCards');
+      var noResult = document.createElement('div');
+      noResult.className = 'no-result';
+      noResult.textContent = '没有找到匹配的赛事条目，试试其他关键词或浏览分类入口。';
+      hotCards.parentNode.insertBefore(noResult, hotCards.nextSibling);
+
+      function doSearch() {
+        var keyword = searchInput.value.trim().toLowerCase();
+        var cards = hotCards.querySelectorAll('.content-card');
+        var visibleCount = 0;
+
+        if (!keyword) {
+          cards.forEach(function(card) { card.style.display = ''; });
+          noResult.classList.remove('show');
+          return;
+        }
+
+        cards.forEach(function(card) {
+          var text = card.textContent.toLowerCase();
+          if (text.indexOf(keyword) !== -1) {
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (visibleCount === 0) {
+          noResult.classList.add('show');
+        } else {
+          noResult.classList.remove('show');
+        }
+      }
+
+      searchBtn.addEventListener('click', doSearch);
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          doSearch();
+        }
+      });
+      searchInput.addEventListener('input', function() {
+        if (searchInput.value.trim() === '') {
+          doSearch();
+        }
+      });
+    })();
+  </script>
+</body>
+  </html>
